@@ -7,18 +7,38 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>Xocitl</title>
   </head>
   <body>
     <h1>Astro Form</h1>
-    <form>
-      <label for="name">Nombre:</label><br />
+    <form id="form">
+      <label for="name">Nombre (s):</label><br />
       <input type="text" id="name" name="name" /><br /><br />
+      <label for="lastname">Apellidos:</label><br />
+      <input type="text" id="lastname" name="lastname" /><br /><br />
+      <label for="email">Correo electrónico:</label><br />
+      <input type="email" id="email" name="email" /><br /><br />
       <label for="number">Número (10 dígitos):</label><br />
       <input type="number" id="number" name="number" maxlength="10" /><br /><br
       />
+      <label for="address">Dirección:</label><br />
+      <textarea id="address" name="address" rows="4" cols="50"></textarea><br
+      /><br />
+
+      <label for="state">Estado:</label><br />
+      <select id="state" name="state"></select><br /><br />
+      <label for="municipality">Municipio:</label><br />
+      <select id="municipality" name="municipality"></select><br /><br />
+      <label for="district">Distrito:</label><br />
+      <select id="district" name="district"></select><br /><br />
+      <label for="section">Sección:</label><br />
+      <select id="section" name="section"></select><br /><br />
+
       <input type="submit" value="Submit" />
     </form>
   </body>
 </html>
+
+<script src="@/js/form.js"></script>
+<script src="@/js/states.js"></script>
+<script src="@/js/districtSections.js"></script>
