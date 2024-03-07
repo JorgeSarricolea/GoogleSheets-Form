@@ -6,30 +6,35 @@ const form = document.getElementById("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Crear un objeto para almacenar los valores del formulario
+  // Create an object to store the form values
   const formData = {
     name: form.name.value,
+    lastName: form.lastName.value,
+    email: form.email.value,
     number: form.number.value,
-    whatsapp: "https://wa.me/52" + form.number.value,
+    address: form.address.value,
     state: form.state.value,
     municipality: form.municipality.value,
+    district: form.district.value,
+    districtSection: form.districtSection.value,
+    whatsapp: "https://wa.me/52" + form.number.value,
   };
 
-  // Enviar el formulario mediante una solicitud fetch
+  // Submit the form using a fetch request
   fetch(url, {
     method: "POST",
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formData), // Enviar el objeto formData como JSON
+    body: JSON.stringify(formData), // Send formData object as JSON
   })
     .then((response) => {
-      // Manejar la respuesta aquí
+      // Handle response
       console.log("Respuesta recibida:", response);
     })
     .catch((error) => {
-      // Manejar cualquier error que ocurra durante la solicitud
+      // Handle any errors that occur during the request
       console.error("Se produjo un error al enviar la solicitud:", error);
     });
 });
