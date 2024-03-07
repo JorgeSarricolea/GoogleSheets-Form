@@ -1,7 +1,7 @@
 const districts = [
   {
     district: 8,
-    sections: [
+    districtSection: [
       "0017",
       "0018",
       "0024",
@@ -26,7 +26,7 @@ const districts = [
   },
   {
     district: 9,
-    sections: [
+    districtSection: [
       "0055",
       "0056",
       "0057",
@@ -51,7 +51,7 @@ const districts = [
   },
   {
     district: 10,
-    sections: [
+    districtSection: [
       "0003",
       "0004",
       "0007",
@@ -76,7 +76,7 @@ const districts = [
   },
   {
     district: 11,
-    sections: [
+    districtSection: [
       "0123",
       "0124",
       "0129",
@@ -101,7 +101,7 @@ const districts = [
   },
   {
     district: 12,
-    sections: [
+    districtSection: [
       "0039",
       "0040",
       "0041",
@@ -126,7 +126,7 @@ const districts = [
   },
   {
     district: 20,
-    sections: [
+    districtSection: [
       "0230",
       "0231",
       "0501",

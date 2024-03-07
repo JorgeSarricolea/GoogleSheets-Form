@@ -1,31 +1,32 @@
-// Asumiendo que tienes un objeto similar para distritos y secciones
 import districtSections from "@/js/objects/districts.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   var districtSelect = document.getElementById("district");
-  var sectionSelect = document.getElementById("section");
+  var sectionSelect = document.getElementById("districtSection");
 
-  // Poblar el menú desplegable de distrito
+  // Fill districts dropdown
   districtSections.forEach(function (district) {
     var option = document.createElement("option");
-    option.text = district.id; // Asumiendo que cada distrito tiene un nombre o identificador
+    option.text = district.district;
+    option.value = district.district;
     districtSelect.add(option);
   });
 
+  // Event when changing district selection
   districtSelect.addEventListener("change", function () {
     var selectedDistrict = districtSelect.value;
     var selectedDistrictObject = districtSections.find(function (district) {
-      return district.id === selectedDistrict;
+      return district.district == selectedDistrict;
     });
 
-    sectionSelect.innerHTML = ""; // Limpiar secciones anteriores
+    sectionSelect.innerHTML = ""; // Clear previous options
 
-    selectedDistrictObject.sections.forEach(function (section) {
-      var option = document.createElement("option");
-      option.text = section;
-      sectionSelect.add(option);
-    });
+    if (selectedDistrictObject && selectedDistrictObject.districtSection) {
+      selectedDistrictObject.districtSection.forEach(function (section) {
+        var option = document.createElement("option");
+        option.text = section; // Add municipalities as options
+        sectionSelect.add(option);
+      });
+    }
   });
-
-  // Puede ser necesario un código adicional para manejar la selección inicial o valores predeterminados
 });
