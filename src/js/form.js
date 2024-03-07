@@ -45,4 +45,6 @@ form.addEventListener("submit", (e) => {
       // Handle any errors that occur during the request
       console.error("Se produjo un error al enviar la solicitud:", error);
     });
+
+  window.location.href = "thanks";
 });
