@@ -10,33 +10,88 @@
     <title>Xocitl</title>
   </head>
   <body>
-    <h1>Astro Form</h1>
-    <form id="form">
-      <label for="name">Nombre (s):</label><br />
-      <input type="text" id="name" name="name" /><br /><br />
-      <label for="lastName">Apellidos:</label><br />
-      <input type="text" id="lastName" name="lastName" /><br /><br />
-      <label for="email">Correo electrónico:</label><br />
-      <input type="email" id="email" name="email" /><br /><br />
-      <label for="number">Número (10 dígitos):</label><br />
-      <input type="number" id="number" name="number" maxlength="10" /><br /><br
+    <h1 class="text-3xl text-center my-12">Simpatizante con Xóchitl Gálvez</h1>
+    <form
+      id="form"
+      class="flex flex-col md:w-2/4 w-10/12 m-auto shadow-xl md:p-12 p-8 gap-4 mb-12"
+    >
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Nombre(s)"
+        required
+        class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
       />
-      <label for="address">Dirección:</label><br />
-      <textarea id="address" name="address" rows="4" cols="50"></textarea><br
-      /><br />
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Apellidos"
+        required
+        class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
+      />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Correo electrónico"
+        required
+        class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
+      />
+      <input
+        type="number"
+        id="number"
+        name="number"
+        placeholder="Número (10 dígitos)"
+        maxlength="10"
+        required
+        class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
+      />
+      <textarea
+        id="address"
+        name="address"
+        placeholder="Dirección"
+        rows="2"
+        cols="50"
+        required
+        class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
+      ></textarea>
 
-      <label for="state">Estado:</label><br />
-      <select id="state" name="state"></select><br /><br />
-      <label for="municipality">Municipio:</label><br />
-      <select id="municipality" name="municipality"></select><br /><br />
-      <label for="district">Distrito:</label><br />
-      <select id="district" name="district"></select><br /><br />
-      <label for="districtSection">Sección:</label><br />
-      <select id="districtSection" name="districtSection"></select><br /><br />
-      <input type="submit" value="Submit" />
+      <p>Estado</p>
+      <select
+        id="state"
+        name="state"
+        required
+        class="outline-none border-2 rounded-lg py-2 px-4"></select>
+      <p>Municipio</p>
+      <select
+        id="municipality"
+        name="municipality"
+        required
+        class="outline-none border-2 rounded-lg py-2 px-4"></select>
+      <p>Distrito</p>
+      <select
+        id="district"
+        name="district"
+        required
+        class="outline-none border-2 rounded-lg py-2 px-4"></select>
+      <p>Sección</p>
+      <select
+        id="districtSection"
+        name="districtSection"
+        required
+        class="outline-none border-2 rounded-lg py-2 px-4"></select>
+      <input
+        type="submit"
+        value="Enviar"
+        class="cursor-pointer bg-pink text-white py-2 px-4 rounded-lg hover:bg-darkPink ease-in-out duration-300 mt-12"
+      />
     </form>
   </body>
 </html>
+
+<style></style>
 
 <script src="@/js/form.js"></script>
 <script src="@/js/dropdowns.js"></script>

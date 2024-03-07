@@ -20,6 +20,14 @@ form.addEventListener("submit", (e) => {
     whatsapp: "https://wa.me/52" + form.number.value,
   };
 
+  // Validate form fields
+  for (const field in formData) {
+    if (!formData[field]) {
+      alert("Favor de llenar todos los campos.");
+      return false;
+    }
+  }
+
   // Submit the form using a fetch request
   fetch(url, {
     method: "POST",
