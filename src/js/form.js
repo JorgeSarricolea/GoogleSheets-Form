@@ -1,36 +1,37 @@
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+document.getElementById("form").addEventListener("submit", function (event) {
+  // Detiene el comportamiento predeterminado de envío del formulario
+  event.preventDefault();
 
-  const formData = {
-    name: form.name.value,
-    lastName: form.lastName.value,
-    email: form.email.value,
-    number: form.number.value,
-    address: form.address.value,
-    state: form.state.value,
-    municipality: form.municipality.value,
-    district: form.district.value,
-    districtSection: form.districtSection.value,
-    whatsapp: "https://wa.me/52" + form.number.value,
-  };
+  // Asegura que "this" es un elemento HTMLFormElement
+  const form = this;
 
-  fetch(url, {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
+  // Obtener el número de teléfono ingresado por el usuario
+  const phoneNumberInput = document.getElementById("number");
+  let phoneNumber = "";
+  if (phoneNumberInput instanceof HTMLInputElement) {
+    phoneNumber = phoneNumberInput.value;
+  }
+
+  // Concatenar el número con el prefijo de WhatsApp
+  const whatsappLink = "https://wa.me/" + phoneNumber;
+
+  // Asignar el valor al campo de entrada oculto
+  const whatsappInput = document.getElementById("whatsapp");
+  if (whatsappInput instanceof HTMLInputElement) {
+    whatsappInput.value = whatsappLink;
+  }
+
+  // Realizar la solicitud POST al servidor
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
   })
     .then((response) => {
-      if (response.ok) {
-        // Si la respuesta es exitosa, redirige a la página de agradecimiento
-        window.location.href = "thanks";
-      } else {
-        console.error("Error en la solicitud:", response.statusText);
-      }
+      // Redirigir a la página de agradecimiento después de completar el envío
+      window.location.href = "/thanks";
     })
     .catch((error) => {
-      console.error("Se produjo un error al enviar la solicitud:", error);
+      console.error("Error:", error);
+      // Puedes manejar errores aquí si es necesario
     });
 });
