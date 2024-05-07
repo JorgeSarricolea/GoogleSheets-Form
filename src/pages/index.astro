@@ -18,13 +18,14 @@
     <form
       id="form"
       class="flex flex-col md:w-2/4 w-10/12 m-auto shadow-3xl md:p-12 p-8 gap-4 mb-12 bg-white rounded"
+      action="https://script.google.com/macros/s/AKfycbwcmem20y0QgYGRKizF9GbWxeRB0dFvEKE7U3xVg1jhJnmAkqtDscpHeRjbXB5WYN1z/exec"
+      method="post"
     >
       <input
         type="text"
         id="name"
         name="name"
         placeholder="Nombre(s)"
-        required
         class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
       />
       <input
@@ -32,7 +33,6 @@
         id="lastName"
         name="lastName"
         placeholder="Apellidos"
-        required
         class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
       />
       <input
@@ -40,7 +40,6 @@
         id="email"
         name="email"
         placeholder="Correo electrónico"
-        required
         class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
       />
       <input
@@ -49,7 +48,6 @@
         name="number"
         placeholder="Número (10 dígitos)"
         maxlength="10"
-        required
         class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
       />
       <textarea
@@ -58,7 +56,6 @@
         placeholder="Dirección"
         rows="2"
         cols="50"
-        required
         class="outline-none border-2 border-l-0 border-r-0 border-t-0 py-2 px-4 focus:border-pink border-3"
       ></textarea>
 
@@ -66,25 +63,21 @@
       <select
         id="state"
         name="state"
-        required
         class="outline-none border-2 rounded-lg py-2 px-4"></select>
       <p>Municipio</p>
       <select
         id="municipality"
         name="municipality"
-        required
         class="outline-none border-2 rounded-lg py-2 px-4"></select>
       <p>Distrito</p>
       <select
         id="district"
         name="district"
-        required
         class="outline-none border-2 rounded-lg py-2 px-4"></select>
       <p>Sección</p>
       <select
         id="districtSection"
         name="districtSection"
-        required
         class="outline-none border-2 rounded-lg py-2 px-4"></select>
 
       <img src="../img/banner_2.jpeg" alt="" class="rounded shadow-xl mt-4" />
@@ -97,5 +90,28 @@
   </body>
 </html>
 
-<script src="@/js/form.js"></script>
 <script src="@/js/dropdowns.js"></script>
+
+<script>
+  document.getElementById("form").addEventListener("submit", function (event) {
+    // Detiene el comportamiento predeterminado de envío del formulario
+    event.preventDefault();
+
+    // Asegura que "this" es un elemento HTMLFormElement
+    const form = this as HTMLFormElement;
+
+    // Realiza la solicitud POST al servidor
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    })
+      .then((response) => {
+        // Redirige a la página de agradecimiento después de completar el envío
+        window.location.href = "/thanks";
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Puedes manejar errores aquí si es necesario
+      });
+  });
+</script>

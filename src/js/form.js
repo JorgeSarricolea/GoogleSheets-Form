@@ -1,12 +1,6 @@
-import SHEETBEST_API from "@/js/api.js";
-const url = SHEETBEST_API;
-
-const form = document.getElementById("form");
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Create an object to store the form values
   const formData = {
     name: form.name.value,
     lastName: form.lastName.value,
@@ -20,31 +14,23 @@ form.addEventListener("submit", (e) => {
     whatsapp: "https://wa.me/52" + form.number.value,
   };
 
-  // Validate form fields
-  for (const field in formData) {
-    if (!formData[field]) {
-      alert("Favor de llenar todos los campos.");
-      return false;
-    }
-  }
-
-  // Submit the form using a fetch request
   fetch(url, {
     method: "POST",
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formData), // Send formData object as JSON
+    body: JSON.stringify(formData),
   })
     .then((response) => {
-      // Handle response
-      console.log("Respuesta recibida:", response);
+      if (response.ok) {
+        // Si la respuesta es exitosa, redirige a la página de agradecimiento
+        window.location.href = "thanks";
+      } else {
+        console.error("Error en la solicitud:", response.statusText);
+      }
     })
     .catch((error) => {
-      // Handle any errors that occur during the request
       console.error("Se produjo un error al enviar la solicitud:", error);
     });
-
-  window.location.href = "thanks";
 });
